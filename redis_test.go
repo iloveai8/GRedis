@@ -24,3 +24,14 @@ func TestPing(t *testing.T) {
 	ping := rdb.client.Ping(context.Background())
 	assert.Equal(t, "PONG", ping.Val())
 }
+
+func TestGet(t *testing.T) {
+	get, err := rdb.Get("test")
+	// 断言 err 为 nil
+	assert.NoError(t, err, "Expected no error but got one")
+
+	expectedValue := "test"
+	assert.Equal(t, expectedValue, get, "Value should be equal to the expected value")
+
+	// 断言 get 不为空
+}
